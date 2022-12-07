@@ -9,19 +9,22 @@ import SwiftUI
 struct ContentView: View {
     @State private var flipped = Array(repeating: false, count: 25)
     @State private var imageName = ""
+    @State private var snow = false
     var body: some View {
         NavigationView {
             ZStack {
                 Color.green.opacity(0.3).ignoresSafeArea()
                 VStack {
-                    Text("CHRISTMAS COUNTDOWN")
+                    Text(" 🎁 CHRISTMAS COUNTDOWN 🎅🏻")
                         .fontWeight(.bold)
-                        .foregroundColor(.red)
-                        .font(Font.custom ("Arial Bold Italic", size: 24))
+                        .foregroundColor(.white)
+                        .font(Font.custom ("Arial Bold Italic", size: 21))
+                        .shadow(color: .red, radius: 2, x: 0, y: 5)
                         .padding()
-                    Text("Tap the box corresdponding to the date")
+                    Text("👉🏻Tap the box corresdponding to the date👈🏻")
                         .foregroundColor(.red)
-                        .font(Font.custom ("Arial Bold", size: 17))
+                        .font(Font.custom ("Arial Bold", size: 16))
+                        .shadow(color: .white, radius: 2, x: 0, y: 5)
                         .padding()
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.fixed(60), spacing: 5), count:5), spacing: 5) {
@@ -41,37 +44,58 @@ struct ContentView: View {
                             .onTapGesture {
                                 flipped[index].toggle()
                             }
+                            
                         }
                     }
+                    NavigationLink ("Travel to WinterWonderland") {
+                        VStack{
+                            Text("CLICK IMAGE")
+                                .fontWeight(.bold)
+                                .foregroundColor(.red)
+                                .font(Font.custom ("Arial Bold", size: 21))
+                                .padding()
+                            Image("deer")
+                                .resizable()
+                                .frame(width: 500, height: 500, alignment: .center)
+                                .aspectRatio(contentMode: .fill)
+                                .padding()
+                                .onTapGesture {
+                                    snow = true
+                                }
+                            if snow == true {
+
+                                Text("MERRY CHRISTMAS ❄️")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.blue)
+                                    .font(Font.custom ("Arial Bold Italic", size: 25))
+                            }
+                        }
+                    }
+                    
                 }
+            }
+            
+        }
+    }
+}
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
+    }
+    
+    struct SquareDate : View {
+        let dayNumber: String
+        let imageName: String
+        var body: some View {
+            ZStack{
+                Color.white
+                    .frame(width: 60, height: 60, alignment: .center)
+                    .cornerRadius (10)
+                Text("\(dayNumber)")
+                    .font(Font.custom ("Arial ", size: 27))
+            }
+            .onTapGesture {
             }
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-struct SquareDate : View {
-    let dayNumber: String
-    let imageName: String
-    var body: some View {
-        ZStack{
-            Color.white
-                .frame(width: 60, height: 60, alignment: .center)
-                .cornerRadius (10)
-            Text("\(dayNumber)")
-                .font(Font.custom ("Arial ", size: 27))
-        }
-        .onTapGesture {
-            //            Image("\(imageName)")
-            //                .resizable()
-            //                .frame(width: 60, height: 60, alignment: .center)
-        }
-    }
-}
-
-
