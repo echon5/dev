@@ -10,6 +10,9 @@ struct ContentView: View {
     @State private var flipped = Array(repeating: false, count: 25)
     @State private var imageName = ""
     @State private var snow = false
+    @State private var counter = 0
+    @State private var changingText = "CLICK IMAGE"
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -47,9 +50,10 @@ struct ContentView: View {
                             
                         }
                     }
-                    NavigationLink ("Travel to WinterWonderland") {
+                    .padding()
+                    NavigationLink ("Travel to WinterWonderland on Christmas Day!") {
                         VStack{
-                            Text("CLICK IMAGE")
+                            Text(changingText)
                                 .fontWeight(.bold)
                                 .foregroundColor(.red)
                                 .font(Font.custom ("Arial Bold", size: 21))
@@ -60,42 +64,43 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fill)
                                 .padding()
                                 .onTapGesture {
-                                    snow = true
+                                    changingText = "MERRY CHRISTMAS"
+                                    //                                            .confettiCannon(counter: $counter)
+                                    //                                            .confettiCannon(counter: $counter, num: 1, confettis: [ .text("❄️")], colors: [.white, .purple], confettiSize: 20.0, radius: 10.0, repetitions: 1000, repetitionInterval: 0.05)
                                 }
-                            if snow == true {
-
-                                Text("MERRY CHRISTMAS ❄️")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.blue)
-                                    .font(Font.custom ("Arial Bold Italic", size: 25))
-                            }
+                            //                                    Button(action: {
+                            //                                        counter += 1
+                            //                                    }) {
+                            
                         }
                     }
-                    
                 }
+                
             }
-            
+        }
+        
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+struct SquareDate : View {
+    let dayNumber: String
+    let imageName: String
+    var body: some View {
+        ZStack{
+            Color.white
+                .frame(width: 60, height: 60, alignment: .center)
+                .cornerRadius (10)
+            Text("\(dayNumber)")
+                .font(Font.custom ("Arial ", size: 27))
+        }
+        .onTapGesture {
         }
     }
 }
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
-    }
-    
-    struct SquareDate : View {
-        let dayNumber: String
-        let imageName: String
-        var body: some View {
-            ZStack{
-                Color.white
-                    .frame(width: 60, height: 60, alignment: .center)
-                    .cornerRadius (10)
-                Text("\(dayNumber)")
-                    .font(Font.custom ("Arial ", size: 27))
-            }
-            .onTapGesture {
-            }
-        }
-    }
+
