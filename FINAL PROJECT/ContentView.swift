@@ -10,7 +10,6 @@ struct ContentView: View {
     @State private var flipped = Array(repeating: false, count: 25)
     @State private var imageName = ""
     @State private var snow = false
-    @State private var counter = 0
     @State private var changingText = "CLICK IMAGE"
     var body: some View {
         NavigationView {
