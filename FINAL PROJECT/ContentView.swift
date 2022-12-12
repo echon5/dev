@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var snow = false
     @State private var counter = 0
     @State private var changingText = "CLICK IMAGE"
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,7 +28,6 @@ struct ContentView: View {
                         .font(Font.custom ("Arial Bold", size: 16))
                         .shadow(color: .white, radius: 2, x: 0, y: 5)
                         .padding()
-                    
                     LazyVGrid(columns: Array(repeating: GridItem(.fixed(60), spacing: 5), count:5), spacing: 5) {
                         ForEach(0..<25) { index in
                             ZStack {
@@ -47,7 +45,6 @@ struct ContentView: View {
                             .onTapGesture {
                                 flipped[index].toggle()
                             }
-                            
                         }
                     }
                     .padding()
@@ -65,23 +62,22 @@ struct ContentView: View {
                                 .padding()
                                 .onTapGesture {
                                     changingText = "MERRY CHRISTMAS!!!"
-                            
+                            }
                         }
                     }
+                    
                 }
-                
             }
+            
         }
-        
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
-}
-
+    
     struct SquareDate : View {
         let dayNumber: String
         let imageName: String
