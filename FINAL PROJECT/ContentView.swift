@@ -64,13 +64,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fill)
                                 .padding()
                                 .onTapGesture {
-                                    changingText = "MERRY CHRISTMAS"
-                                    //                                            .confettiCannon(counter: $counter)
-                                    //                                            .confettiCannon(counter: $counter, num: 1, confettis: [ .text("❄️")], colors: [.white, .purple], confettiSize: 20.0, radius: 10.0, repetitions: 1000, repetitionInterval: 0.05)
-                                }
-                            //                                    Button(action: {
-                            //                                        counter += 1
-                            //                                    }) {
+                                    changingText = "MERRY CHRISTMAS!!!"
                             
                         }
                     }
@@ -88,18 +82,19 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct SquareDate : View {
-    let dayNumber: String
-    let imageName: String
-    var body: some View {
-        ZStack{
-            Color.white
-                .frame(width: 60, height: 60, alignment: .center)
-                .cornerRadius (10)
-            Text("\(dayNumber)")
-                .font(Font.custom ("Arial ", size: 27))
-        }
-        .onTapGesture {
+    struct SquareDate : View {
+        let dayNumber: String
+        let imageName: String
+        var body: some View {
+            ZStack{
+                Color.white
+                    .frame(width: 60, height: 60, alignment: .center)
+                    .cornerRadius (10)
+                Text("\(dayNumber)")
+                    .font(Font.custom ("Arial ", size: 27))
+            }
+            .onTapGesture {
+            }
         }
     }
 }
